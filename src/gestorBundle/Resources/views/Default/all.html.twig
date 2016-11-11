@@ -1,0 +1,33 @@
+{% extends '::base.html.twig' %}
+        {% block body %}
+
+<h1>TABLA EMPRESA</h1>
+
+
+<table border="1px" id="datos">
+
+
+      <tr>
+          <td>Nombre</td>
+          <td>Dirección</td>
+          <td>Código Postal</td>
+          <td>Teléfono 1</td>
+          <td>Teléfono 2</td>
+          <td>Fecha de creación</td>
+      </tr>
+
+
+            {% for dato in datos %}
+            <tr>
+                <td id="tdTop" class="o">{{ dato.nombre }}</td>
+                <td>{{ dato.direccion }}</td>
+                <td>{{ dato.cp }}</td>
+                <td>{{ dato.telefono1 }}</td>
+                <td>{{ dato.telefono2 }}</td>
+                <td>{{ dato.fechaCreacion }}</td>
+            </tr>
+            {% endfor %}
+
+
+</table>
+  {% endblock %}

@@ -1,0 +1,32 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+<h1>TABLA ALUMNOS</h1>
+<table border="1px" id="datos">
+
+
+      <tr>
+          <td>Nombre</td>
+          <td>Apellido 1</td>
+          <td>Apellido 2</td>
+          <td>Ciclo</td>
+          <td>Empresa</td>
+
+      </tr>
+
+
+            {% for dato in alumnos %}
+            <tr>
+                <td id="tdTop" class="o">{{ dato.nombre }}</td>
+                <td class="c">{{ dato.apellido1 }}</td>
+                <td class="o">{{ dato.apellido2 }}</td>
+                <td class="c">{{ dato.ciclo }}</td>
+                <td class="o">{{ dato.empresa.nombre }}</td>
+
+            </tr>
+            {% endfor %}
+
+
+</table>
+
+  {% endblock %}
