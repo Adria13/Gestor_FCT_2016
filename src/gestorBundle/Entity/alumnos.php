@@ -56,6 +56,13 @@ class alumnos
      */
 
      private $empresa;
+
+     /**
+      * @ORM\ManyToOne(targetEntity="profesores", inversedBy="alumnos")
+      * @ORM\JoinColumn(name="profesor_id", referencedColumnName="id")
+      */
+
+      private $profesores;
     /**
      * Get id
      *

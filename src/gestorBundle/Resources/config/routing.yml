@@ -6,6 +6,10 @@ all:
         path:     /all
         defaults: { _controller: gestorBundle:Default:all }
 
+profesores:
+        path:     /profesores
+        defaults: { _controller: gestorBundle:Default:profesores }
+
 crear_empresa:
         path:     /crear
         defaults: { _controller: gestorBundle:Default:crearEmpresa }
@@ -23,5 +27,3 @@ api:
   path: /empresa
   defaults:  { _controller: gestorBundle:empresaApi:JSON }
   methods: [GET]
-
-  

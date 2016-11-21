@@ -5,6 +5,7 @@ namespace gestorBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use gestorBundle\Entity\empresa;
 use gestorBundle\Form\empresaType;
+use gestorBundle\Entity\profesores;
 use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
@@ -14,6 +15,13 @@ class DefaultController extends Controller
         $repository = $this->getDoctrine()->getRepository('gestorBundle:empresa');
         $datos = $repository->findAll();
         return $this->render('gestorBundle:Default:all.html.twig',array('datos' => $datos));
+    }
+
+    public function profesoresAction()
+    {
+        $repository = $this->getDoctrine()->getRepository('gestorBundle:profesores');
+        $datos = $repository->findAll();
+        return $this->render('gestorBundle:Default:profesores.html.twig',array('datos' => $datos));
     }
 
     public function crearEmpresaAction(){
