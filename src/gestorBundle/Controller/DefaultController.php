@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use gestorBundle\Entity\empresa;
 use gestorBundle\Form\empresaType;
 use gestorBundle\Entity\profesores;
+use gestorBundle\Form\profesoresType;
 use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
@@ -20,8 +21,8 @@ class DefaultController extends Controller
     public function profesoresAction()
     {
         $repository = $this->getDoctrine()->getRepository('gestorBundle:profesores');
-        $datos = $repository->findAll();
-        return $this->render('gestorBundle:Default:profesores.html.twig',array('datos' => $datos));
+        $datosProf = $repository->findAll();
+        return $this->render('gestorBundle:Default:profesores.html.twig',array('datosProf' => $datosProf));
     }
 
     public function crearEmpresaAction(){
@@ -55,6 +56,24 @@ class DefaultController extends Controller
       }
 
       return $this->render('gestorBundle:Default:new.html.twig', array("form"=>$form->createView()));
+    }
+
+    //recogemos los datos de la base de datos
+    public function formProfeosresAction(Request $request){
+
+      $profesores= new profesores();
+      $form = $this->createForm(profesoresType::class,$profesores);
+
+      $form->handleRequest($request);
+      if ($form->isSubmitted() && $form->isValid()){
+        $empresa = $form->getData();
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($profesores);
+        $em->flush();
+        return $this->redirectToRoute('profesores');
+      }
+
+      return $this->render('gestorBundle:Default:formProfesores.html.twig', array("form"=>$form->createView()));
     }
 
     public function alumnosAction(){

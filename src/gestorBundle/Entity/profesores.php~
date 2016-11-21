@@ -132,28 +132,4 @@ class profesores
     {
         return $this->departamento;
     }
-
-    /**
-     * Set alumnos
-     *
-     * @param \gestorBundle\Entity\alumnos $alumnos
-     *
-     * @return profesores
-     */
-    public function setAlumnos(\gestorBundle\Entity\alumnos $alumnos = null)
-    {
-        $this->alumnos = $alumnos;
-
-        return $this;
-    }
-
-    /**
-     * Get alumnos
-     *
-     * @return \gestorBundle\Entity\alumnos
-     */
-    public function getAlumnos()
-    {
-        return $this->alumnos;
-    }
 }

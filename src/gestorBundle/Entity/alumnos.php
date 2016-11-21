@@ -57,6 +57,7 @@ class alumnos
 
      private $empresa;
 
+     //hacemos la relacion de muchos a uno
      /**
       * @ORM\ManyToOne(targetEntity="profesores", inversedBy="alumnos")
       * @ORM\JoinColumn(name="profesor_id", referencedColumnName="id")

@@ -18,6 +18,10 @@ new_empresa:
         path:     /new
         defaults: { _controller: gestorBundle:Default:new }
 
+profesores_form:
+        path:     /formProfesores
+        defaults: { _controller: gestorBundle:Default:formProfeosres }
+
 
 alumnos:
         path:     /alumnos/all
