@@ -18,3 +18,10 @@ new_empresa:
 alumnos:
         path:     /alumnos/all
         defaults: { _controller: gestorBundle:Default:alumnos }
+
+api:
+  path: /empresa
+  defaults:  { _controller: gestorBundle:empresaApi:JSON }
+  methods: [GET]
+
+  
