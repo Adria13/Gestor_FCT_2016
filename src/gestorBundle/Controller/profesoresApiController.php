@@ -7,7 +7,8 @@ use gestorBundle\Entity\profesores;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 
-class empresaApiController extends Controller
+//creamos el controlador y las funcines para generar el api desde los datos de la base de datos, generamos un array para guardarlos
+class profesoresApiController extends Controller
 {
   public function JSONAction()
    {
@@ -15,23 +16,20 @@ class empresaApiController extends Controller
        $empresas = $repository->findAll();
        //var_dump($empresas);
        $data = array('profs' => array());
-       foreach ($empresas as $empresa) {
-           $data['profs'][] = $this->serializeEmpresa($empresa);
+       foreach ($profs as $profe) {
+           $data['profs'][] = $this->serializeEmpresa($profe);
        }
        $response = new JsonResponse($data, 200);
        return $response;
        //return $this->json($empresas);*/
    }
 
-   private function serializeEmpresa(Empresa $empresa)
+   private function serializeProfesor(Profesores $profesores)
   {
     return array(
-        'nombre' => $empresa->getNombre(),
-        'direccion' => $empresa->getDireccion(),
-        'cp' => $empresa->getCp(),
-        'telefono1' => $empresa->getTelefono1(),
-        'telefono2' => $empresa->getTelefono2(),
-        'fechaCreacion' => $empresa->getFechaCreacion(),
+        'nombre' => $profesores->getNombre(),
+        'apellidos' => $profesores->getApellidos(),
+        'departamento' => $profesores->getDepartamento(),
     );
   }
 

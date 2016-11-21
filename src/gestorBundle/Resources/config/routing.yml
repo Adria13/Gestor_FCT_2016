@@ -31,3 +31,8 @@ api:
   path: /empresa
   defaults:  { _controller: gestorBundle:empresaApi:JSON }
   methods: [GET]
+
+apiProf:
+  path: /apiProf
+  defaults:  { _controller: gestorBundle:profesoresApi:JSON }
+  methods: [GET]

@@ -5,6 +5,8 @@ namespace gestorBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use gestorBundle\Entity\empresa;
 use gestorBundle\Form\empresaType;
+
+//ponemos los use necesarios
 use gestorBundle\Entity\profesores;
 use gestorBundle\Form\profesoresType;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,6 +20,7 @@ class DefaultController extends Controller
         return $this->render('gestorBundle:Default:all.html.twig',array('datos' => $datos));
     }
 
+    //generamos la funcion de recoger los datos de la base de adtos y enviarlos a un twig para mostrarlos por pantalla
     public function profesoresAction()
     {
         $repository = $this->getDoctrine()->getRepository('gestorBundle:profesores');
@@ -58,7 +61,7 @@ class DefaultController extends Controller
       return $this->render('gestorBundle:Default:new.html.twig', array("form"=>$form->createView()));
     }
 
-    //recogemos los datos de la base de datos
+    //recogemos los datos de la base de datos para que los recoga el formulario.
     public function formProfeosresAction(Request $request){
 
       $profesores= new profesores();
