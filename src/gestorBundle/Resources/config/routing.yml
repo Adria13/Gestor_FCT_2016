@@ -20,7 +20,7 @@ new_empresa:
 
 profesores_form:
         path:     /formProfesores
-        defaults: { _controller: gestorBundle:Default:formProfeosres }
+        defaults: { _controller: gestorBundle:Default:formProfesores }
 
 
 alumnos:

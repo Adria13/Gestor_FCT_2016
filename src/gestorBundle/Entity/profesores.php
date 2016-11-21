@@ -54,7 +54,7 @@ class profesores
       * @ORM\ManyToOne(targetEntity="alumnos", inversedBy="profesores")
       */
 
-      private $alumnos;
+      //private $alumnos;
 
     public function getId()
     {

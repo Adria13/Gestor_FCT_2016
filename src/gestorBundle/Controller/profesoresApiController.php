@@ -13,11 +13,11 @@ class profesoresApiController extends Controller
   public function JSONAction()
    {
        $repository = $this->getDoctrine()->getRepository('gestorBundle:profesores');
-       $empresas = $repository->findAll();
+       $profs = $repository->findAll();
        //var_dump($empresas);
        $data = array('profs' => array());
        foreach ($profs as $profe) {
-           $data['profs'][] = $this->serializeEmpresa($profe);
+           $data['profs'][] = $this->serializeProfesor($profe);
        }
        $response = new JsonResponse($data, 200);
        return $response;

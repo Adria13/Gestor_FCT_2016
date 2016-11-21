@@ -62,7 +62,7 @@ class DefaultController extends Controller
     }
 
     //recogemos los datos de la base de datos para que los recoga el formulario.
-    public function formProfeosresAction(Request $request){
+    public function formProfesoresAction(Request $request){
 
       $profesores= new profesores();
       $form = $this->createForm(profesoresType::class,$profesores);

@@ -19,18 +19,18 @@ class profesoresType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('nombre',TextType::class,array('label'=>'Nombre de la empresa',
+        ->add('nombre',TextType::class,array('label'=>'Nombre profesor',
                                               'label_attr'=>array('class'=>'tag'),
                                               'attr'=> array('class' => 'tag2')))
         ->add('apellidos',TextType::class,array('label'=>'Apellidos',
                                               'label_attr'=>array('class'=>'tag'),
                                               'attr'=> array('class' => 'tag2')))
-        ->add('departamento',IntegerType::class,array('label'=>'Departamento',
+        ->add('departamento',TextType::class,array('label'=>'Departamento',
                                               'label_attr'=>array('class'=>'tag'),
                                               'attr'=> array('class' => 'tag2')))
 
-  ->add('guardar',SubmitType::class)
-  ->add('borrar',ResetType::class)
+        ->add('guardar',SubmitType::class)
+        ->add('borrar',ResetType::class)
         ;
     }
 
