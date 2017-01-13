@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use usuariosBundle\Entity\User;
 use usuariosBundle\Form\UserType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
@@ -44,7 +45,7 @@ class DefaultController extends Controller
             // ... do any other work - like sending them an email, etc
             // maybe set a "flash" success message for the user
 
-            return new Respnse('Usuario registrado');
+            return new Response('Usuario registrado');
         }
 
         return $this->render(
