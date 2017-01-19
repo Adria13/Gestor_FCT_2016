@@ -7,3 +7,14 @@ h1{
   margin-left: 400px;
   margin-top: 0px;
 }
+
+#formulario{
+  margin-left: 400px;
+  margin-top: 200px;
+  position: absolute;
+  background-color: #333333;
+  color: #f7f7f7;
+  padding: 20px;
+  text-align: left;
+
+}

@@ -20,6 +20,14 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/usuarios", name="usuarios")
+     */
+    public function usuariosAction()
+    {
+        return $this->render('usuariosBundle:Default:usuarios.html.twig');
+    }
+
+    /**
      * @Route("/register", name="user_registration")
      */
     public function registerAction(Request $request)
@@ -52,5 +60,24 @@ class DefaultController extends Controller
             'usuariosBundle:Default:register.html.twig',
             array('form' => $form->createView())
         );
+    }
+
+     /**
+     * @Route("/usuarios/login", name="login")
+     */
+    public function loginAction(Request $request)
+    {
+      $authenticationUtils = $this->get('security.authentication_utils');
+
+      // get the login error if there is one
+      $error = $authenticationUtils->getLastAuthenticationError();
+
+      // last username entered by the user
+      $lastUsername = $authenticationUtils->getLastUsername();
+
+      return $this->render('usuariosBundle:Default:login.html.twig', array(
+          'last_username' => $lastUsername,
+          'error'         => $error,
+      ));
     }
 }
