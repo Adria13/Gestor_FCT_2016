@@ -4,6 +4,7 @@ namespace usuariosBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
@@ -27,12 +28,36 @@ class User implements UserInterface
      *
      * @ORM\Column(name="username", type="string", length=255, unique=true)
      */
+
+     /**
+     * @Assert\NotBlank()
+     */
+
+     /**
+     * @Assert\Length(
+     *      min = 4,
+     *      max = 32,
+     *      minMessage = "Tu nombre de usuatio tiene que contener más de {{ limit }} caracteres",
+     *      maxMessage = "Tu nombre de usuatio tiene que contener menos de {{ limit }} caracteres"
+     * )
+     */
     private $username;
 
     /**
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255, unique=true)
+     */
+
+     /**
+     * @Assert\NotBlank()
+     */
+
+     /**
+     * @Assert\Email(
+     *     message = "El email introducido'{{ value }}' no es un email válido.",
+     *     checkMX = true
+     * )
      */
     private $email;
 
@@ -41,6 +66,19 @@ class User implements UserInterface
      *
      * @ORM\Column(name="password", type="string", length=64)
      */
+     /**
+     * @Assert\NotBlank()
+     */
+
+     /**
+     * @Assert\Length(
+     *      min = 0,
+     *      max = 8,
+     *      minMessage = "Tu contraseña tiene que contener más de {{ limit }} caracteres",
+     *      maxMessage = "Tu contraseña tiene que ser menor que {{ limit }} caracteres"
+     * )
+     */
+
     private $password;
 
 
