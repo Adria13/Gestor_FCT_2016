@@ -27,19 +27,15 @@ class User implements UserInterface
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=255, unique=true)
-     */
-
-     /**
+     *
      * @Assert\NotBlank()
-     */
-
-     /**
+     *
      * @Assert\Length(
      *      min = 4,
      *      max = 32,
-     *      minMessage = "Tu nombre de usuatio tiene que contener más de {{ limit }} caracteres",
-     *      maxMessage = "Tu nombre de usuatio tiene que contener menos de {{ limit }} caracteres"
-     * )
+     *      minMessage = "Tu nombre de usuario tiene que tener más de {{ limit }} caracteres",
+     *      maxMessage = "Tu nombre de usuario tiene que tener menos de {{ limit }} caracteres"
+     *      )
      */
     private $username;
 
@@ -47,17 +43,13 @@ class User implements UserInterface
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255, unique=true)
-     */
-
-     /**
-     * @Assert\NotBlank()
-     */
-
-     /**
+     *
+     *@Assert\NotBlank()
+     *
      * @Assert\Email(
-     *     message = "El email introducido'{{ value }}' no es un email válido.",
+     *     message = "El email '{{ value }}' no es un email válido.",
      *     checkMX = true
-     * )
+     *     )
      */
     private $email;
 
@@ -66,19 +58,6 @@ class User implements UserInterface
      *
      * @ORM\Column(name="password", type="string", length=64)
      */
-     /**
-     * @Assert\NotBlank()
-     */
-
-     /**
-     * @Assert\Length(
-     *      min = 0,
-     *      max = 8,
-     *      minMessage = "Tu contraseña tiene que contener más de {{ limit }} caracteres",
-     *      maxMessage = "Tu contraseña tiene que ser menor que {{ limit }} caracteres"
-     * )
-     */
-
     private $password;
 
 
@@ -92,6 +71,28 @@ class User implements UserInterface
         return $this->id;
     }
 
+    /**
+    *@Assert\NotBlank()
+    *@Assert\Regex(
+    *   pattern="/^.*[A-Z]+.*$/",
+    *   match=true,
+    *   message="La contraseña tiene que contener al menos una mayúscula"
+    *)
+    *@Assert\Regex(
+    *   pattern="/^.*[0-9]+.*$/",
+    *   match=true,
+    *   message="La contraseña tiene que contener al menos un número"
+    *)
+    *@Assert\Regex(
+    *   pattern="/[a-zA-Z]+/",
+    *   match=true,
+    *   message="La contraseña tiene que contener al menos una letra"
+    *)
+    * @Assert\Length(
+    *      min = 8,
+    *      maxMessage = "La contraseña debe tener mínimo {{ limit }} caracteres"
+    *)
+    */
     private $plainPassword;
 
     public function getPlainPassword(){

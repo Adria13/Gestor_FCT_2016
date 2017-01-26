@@ -3,19 +3,19 @@
 security:
     encoders:
         UsuariosBundle\Entity\User: bcrypt
-        Symfony\Component\Security\Core\User\User: plaintext
+
 
     providers:
         our_db_provider:
-          entity:
-            class: gestorBundle:User
-            property: username
+            entity:
+                class: usuariosBundle:User
+                property: username
         in_memory:
             memory:
                 users:
                     admin:
                         password: 1234
-                        roles: 'ROLE_USER'
+                        roles: 'ROLE_ADMIN'
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -34,6 +34,7 @@ security:
             form_login:
                 login_path: /usuarios/login
                 check_path: /usuarios/login
+                default_target_path: /usuarios
             logout:
                 path:   /usuarios/logout
                 target: /usuarios
