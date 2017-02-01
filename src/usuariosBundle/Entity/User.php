@@ -33,8 +33,8 @@ class User implements UserInterface
      * @Assert\Length(
      *      min = 4,
      *      max = 32,
-     *      minMessage = "Tu nombre de usuario tiene que tener más de {{ limit }} caracteres",
-     *      maxMessage = "Tu nombre de usuario tiene que tener menos de {{ limit }} caracteres"
+     *      minMessage = "Tu nombre de usuario tiene que tener más de 4 caracteres",
+     *      maxMessage = "Tu nombre de usuario tiene que tener menos de 32 caracteres"
      *      )
      */
     private $username;
@@ -56,6 +56,13 @@ class User implements UserInterface
     /**
      * @var string
      *
+     * @ORM\Column(name="roles", type="json_array")
+     */
+    private $roles = array();
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="password", type="string", length=64)
      */
     private $password;
@@ -73,6 +80,7 @@ class User implements UserInterface
 
     /**
     *@Assert\NotBlank()
+    *
     *@Assert\Regex(
     *   pattern="/^.*[A-Z]+.*$/",
     *   match=true,
@@ -90,7 +98,7 @@ class User implements UserInterface
     *)
     * @Assert\Length(
     *      min = 8,
-    *      maxMessage = "La contraseña debe tener mínimo {{ limit }} caracteres"
+    *      maxMessage = "La contraseña debe tener mínimo 8 caracteres"
     *)
     */
     private $plainPassword;
@@ -186,8 +194,14 @@ class User implements UserInterface
         return null;
     }
 
+    public function setRoles(array $roles) {
+
+      $this->roles = $roles;
+
+    }
+
     public function getRoles() {
-      return array('ROLE_USER');
+      return $this->roles;
     }
 
     public function eraseCredentials(){

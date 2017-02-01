@@ -28,6 +28,16 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/admin", name="admin")
+     */
+    public function adminAction()
+    {
+        return $this->render('usuariosBundle:Default:admin.html.twig');
+    }
+
+
+
+    /**
      * @Route("/register", name="user_registration")
      */
     public function registerAction(Request $request)
@@ -44,6 +54,9 @@ class DefaultController extends Controller
             $password = $this->get('security.password_encoder')
                 ->encodePassword($user, $user->getPlainPassword());
             $user->setPassword($password);
+
+            $roles=["ROLE_USER"];
+            $user->setRoles($roles);
 
             // 4) save the User!
             $em = $this->getDoctrine()->getManager();
