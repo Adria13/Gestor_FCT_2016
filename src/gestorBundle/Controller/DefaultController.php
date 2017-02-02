@@ -9,6 +9,8 @@ use gestorBundle\Form\empresaType;
 //ponemos los use necesarios
 use gestorBundle\Entity\profesores;
 use gestorBundle\Form\profesoresType;
+use gestorBundle\Entity\conf;
+use gestorBundle\Form\confType;
 use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
@@ -84,4 +86,31 @@ class DefaultController extends Controller
       $alumnos = $repository->findAll();
       return $this->render('gestorBundle:alumnos:all.html.twig',array('alumnos' => $alumnos));
     }
+
+
+    public function confAction()
+    {
+        $repository = $this->getDoctrine()->getRepository('gestorBundle:conf');
+        $datos = $repository->findAll();
+        return $this->render('gestorBundle:Default:conf.html.twig',array('datos' => $datos));
+    }
+
+    public function formConfAction(Request $request){
+
+      $empresa= new conf();
+      $form = $this->createForm(confType::class,$empresa);
+
+      $form->handleRequest($request);
+      if ($form->isSubmitted() && $form->isValid()){
+        $empresa = $form->getData();
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($empresa);
+        $em->flush();
+        return $this->redirectToRoute('conf');
+      }
+      return $this->render('gestorBundle:Default:formConf.html.twig', array("form"=>$form->createView()));
+    }
+
+
+
 }

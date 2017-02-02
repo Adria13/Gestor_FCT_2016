@@ -1,0 +1,25 @@
+{% extends '::base.html.twig' %}
+        {% block body %}
+
+<h1>Configuraciones</h1>
+
+
+<table border="1px" id="datos">
+
+
+      <tr>
+          <td>Parametros</td>
+          <td>Configuracion</td>
+      </tr>
+
+
+            {% for dato in datos %}
+            <tr>
+                <td id="tdTop" class="o">{{ dato.param }}</td>
+                <td>{{ dato.configuracion }}</td>
+            </tr>
+            {% endfor %}
+
+
+</table>
+  {% endblock %}

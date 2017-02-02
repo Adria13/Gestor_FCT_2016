@@ -6,6 +6,11 @@ all:
         path:     /all
         defaults: { _controller: gestorBundle:Default:all }
 
+
+conf:
+        path:     /conf
+        defaults: { _controller: gestorBundle:Default:conf }
+
 profesores:
         path:     /profesores
         defaults: { _controller: gestorBundle:Default:profesores }
@@ -21,6 +26,10 @@ new_empresa:
 profesores_form:
         path:     /formProfesores
         defaults: { _controller: gestorBundle:Default:formProfesores }
+
+formConf:
+        path:     /formConf
+        defaults: { _controller: gestorBundle:Default:formConf }
 
 
 alumnos:

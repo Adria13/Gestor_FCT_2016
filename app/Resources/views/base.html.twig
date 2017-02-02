@@ -55,6 +55,16 @@
              <li>
                  <a href="{{ asset('admin') }}">Admin</a>
              </li>
+
+             {% if is_granted('ROLE_SUPER_ADMIN') %}
+             <li>
+                  <a href="{{ asset('conf') }}">Configuración</a>
+             </li>
+
+             <li>
+                  <a href="{{ asset('formConf') }}">Configuración</a>
+             </li>
+             {% endif %}
          </ul>
      </div>
      <!-- /#sidebar-wrapper -->
